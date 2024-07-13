@@ -1,11 +1,11 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 class CLIApp
 {
-    private FinanceManager $finaceManager;
-    
+    private FinanceManager $financeManager;
+
     private const ADD_INCOME = 1;
     private const ADD_EXPENSE = 2;
     private const VIEW_INCOME = 3;
@@ -17,52 +17,52 @@ class CLIApp
     private array $options = [
         self::ADD_INCOME => 'Add income',
         self::ADD_EXPENSE => 'Add expense',
-        self::VIEW_INCOME => 'View income',
-        self::VIEW_EXPENSE => 'View expense',
+        self::VIEW_INCOME => 'View incomes',
+        self::VIEW_EXPENSE => 'View expenses',
         self::VIEW_SAVINGS => 'View savings',
         self::VIEW_CATEGORIES => 'View categories',
-        self::EXIT_APP => 'Exit',
+        self::EXIT_APP => 'Exit'
     ];
 
     public function __construct()
     {
-        $this->finaceManager = new FinanceManager(new FileStorage());
+        $this->financeManager = new FinanceManager(new FileStorage());
     }
 
-    public function run()
+    public function run(): void
     {
-        while(true){
-            foreach($this->options as $option => $label){
-                printf("%d => %s\n", $option, $label);
+        while (true) {
+            foreach ($this->options as $option => $label) {
+                printf("%d. %s\n", $option, $label);
             }
 
-            $choice = readline("Enter your option: ");
-            
-            switch($choice){
+            $choice = intval(readline("Enter your option: "));
+
+            switch ($choice) {
                 case self::ADD_INCOME:
-                    $amount = (float) trim(readline("Enter income amount: "));
+                    $amount = (float)trim(readline("Enter income amount: "));
                     $category = trim(readline("Enter income category: "));
-                    $this->finaceManager->addIncome($amount, $category);
+                    $this->financeManager->addIncome($amount, $category);
                     break;
                 case self::ADD_EXPENSE:
-                    $amount = (float) trim(readline("Enter expense amount: "));
+                    $amount = (float)trim(readline("Enter expense amount: "));
                     $category = trim(readline("Enter expense category: "));
-                    $this->finaceManager->addExpense($amount, $category);
+                    $this->financeManager->addExpense($amount, $category);
                     break;
                 case self::VIEW_INCOME:
-                    $this->finaceManager->showIncomes();
+                    $this->financeManager->showIncomes();
                     break;
                 case self::VIEW_EXPENSE:
-                    $this->finaceManager->showExpenses();
+                    $this->financeManager->showExpenses();
                     break;
                 case self::VIEW_SAVINGS:
-                    $this->finaceManager->showSavings();
+                    $this->financeManager->showSavings();
                     break;
                 case self::VIEW_CATEGORIES:
-                    $this->finaceManager->showCategories();
+                    $this->financeManager->showCategories();
                     break;
                 case self::EXIT_APP:
-                    break 2;
+                    return;
                 default:
                     echo "Invalid option.\n";
             }
