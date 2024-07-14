@@ -6,7 +6,6 @@ class FileStorage implements Storage
 {
     public function save(string $model, array $data): void
     {
-        // var_dump($data);
         file_put_contents($this->getModelPath($model), serialize($data));
     }
 

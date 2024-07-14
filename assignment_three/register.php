@@ -2,8 +2,32 @@
 require "autoload.php";
 
 if(isset($_POST['submit'])){
-    $user = new User(new FileStorage());
-    $user->create((object) $_POST);
+    $errors = [];
+    if(empty($_POST['name'])){
+        $errors['name'] = 'Please provide a name';
+    }
+    if(empty($_POST['email'])){
+        $errors['email'] = 'Please provide an email address';
+    }elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+        $errors['email'] = 'Please provide a valid email address';
+    }
+
+    if(empty($_POST['password'])){
+        $errors['password'] = 'Please provide a password';
+    }elseif(strlen($_POST['password']) < 8){
+        $errors['password'] = 'Please provide a password longer than 8 characters';
+    }
+
+    if(empty($_POST['confirm_password'])){
+        $errors['confirm_password'] = 'Please provide a password confirmation';
+    }elseif($_POST['password'] != $_POST['confirm_password']){
+        $errors['confirm_password'] = 'Confirm password didnot match';
+    }
+
+    if(empty($errors)){
+        $user = new User(new FileStorage());
+        $user->create((object) $_POST);
+    }
 }
 
 ?>
@@ -84,6 +108,9 @@ if(isset($_POST['submit'])){
                                 <div class="mt-2">
                                     <input id="name" name="name" type="text" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
+                                <?php if(isset($errors['name'])):?>
+                                    <p class="text-xs text-red-600 mt-2" id="name-error"><?= $errors['name']; ?></p>
+                                <?php endif; ?>
                             </div>
 
                             <div>
@@ -91,6 +118,9 @@ if(isset($_POST['submit'])){
                                 <div class="mt-2">
                                     <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
+                                <?php if(isset($errors['email'])):?>
+                                    <p class="text-xs text-red-600 mt-2" id="name-error"><?= $errors['email']; ?></p>
+                                <?php endif; ?>
                             </div>
 
                             <div>
@@ -99,6 +129,9 @@ if(isset($_POST['submit'])){
                                 </div>
                                 <div class="mt-2">
                                     <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <?php if(isset($errors['password'])):?>
+                                        <p class="text-xs text-red-600 mt-2" id="name-error"><?= $errors['password']; ?></p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
@@ -108,6 +141,9 @@ if(isset($_POST['submit'])){
                                 </div>
                                 <div class="mt-2">
                                     <input id="confirm_password" name="confirm_password" type="password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <?php if(isset($errors['confirm_password'])):?>
+                                        <p class="text-xs text-red-600 mt-2" id="name-error"><?= $errors['confirm_password']; ?></p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 

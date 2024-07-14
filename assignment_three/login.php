@@ -2,12 +2,23 @@
 require "autoload.php";
 
 if(isset($_POST['submit'])){
-    // var_dump($_POST['email']);
-    // exit;
-    $user = new User(new FileStorage());
-    $userData = $user->getUser((object) $_POST);
-    
-    // var_dump($userData);
+    $errors = [];
+    if(empty($_POST['email'])){
+        $errors['email'] = 'Please provide an email address';
+    }elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+        $errors['email'] = 'Please provide a valid email address';
+    }
+
+    if(empty($_POST['password'])){
+        $errors['password'] = 'Please provide a password';
+    }elseif(strlen($_POST['password']) < 8){
+        $errors['password'] = 'Please provide a password longer than 8 characters';
+    }
+
+    if(empty($errors)){
+        $user = new User(new FileStorage());
+        $errors['auth_error'] = $user->getUser((object) $_POST);
+    }
 }
 ?>
 
@@ -76,6 +87,17 @@ if(isset($_POST['submit'])){
             <div class="mx-auto max-w-xl">
                 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                     <div class="mx-auto w-full max-w-xl text-center px-24">
+                        <?php if(isset($errors['auth_error'])):?>
+                            <p class="text-xs text-red-600 mt-2" id="name-error"><?= $errors['auth_error']; ?></p>
+                        <?php endif; ?>
+                        <?php 
+                        $message = flash('success');
+                        if($message):
+                        ?>
+                        <div class="mt-2 bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4" role="alert">
+                            <span class="font-bold"><?= $message; ?></span>
+                        </div>
+                        <?php endif?>
                         <h1 class="block text-center font-bold text-2xl bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">TruthWhisper</h1>
                     </div>
 
@@ -86,6 +108,9 @@ if(isset($_POST['submit'])){
                                 <div class="mt-2">
                                     <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
+                                <?php if(isset($errors['email'])):?>
+                                    <p class="text-xs text-red-600 mt-2" id="name-error"><?= $errors['email']; ?></p>
+                                <?php endif; ?>
                             </div>
 
                             <div>
@@ -98,6 +123,9 @@ if(isset($_POST['submit'])){
                                 <div class="mt-2">
                                     <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
+                                <?php if(isset($errors['password'])):?>
+                                    <p class="text-xs text-red-600 mt-2" id="name-error"><?= $errors['password']; ?></p>
+                                <?php endif; ?>
                             </div>
 
                             <div>
