@@ -2,10 +2,8 @@
 require "autoload.php";
 
 if(isset($_POST['submit'])){
-    // var_dump($_POST['name']);
     $user = new User(new FileStorage());
     $user->create((object) $_POST);
-    // $user->save($userData);
 }
 
 ?>
