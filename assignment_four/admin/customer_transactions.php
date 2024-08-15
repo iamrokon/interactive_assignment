@@ -52,7 +52,7 @@ $transfers = $financeManager->getTransferData($email);
       }
     </style>
 
-    <title>Transactions of Al Nahian</title>
+    <title>Transactions of <?=$_SESSION['name']?></title>
   </head>
   <body class="h-full">
     <div class="min-h-full">
@@ -241,7 +241,7 @@ $transfers = $financeManager->getTransferData($email);
         <header class="py-10">
           <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-bold tracking-tight text-white">
-              Transactions of Al Nahian
+              Transactions of <?=$_SESSION['name']?>
             </h1>
           </div>
         </header>
@@ -255,7 +255,7 @@ $transfers = $financeManager->getTransferData($email);
               <div class="sm:flex sm:items-center">
                 <div class="sm:flex-auto">
                   <p class="mt-2 text-sm text-gray-700">
-                    List of transactions made by Al Nahian.
+                    List of transactions made by <?=$_SESSION['name']?>.
                   </p>
                 </div>
               </div>
