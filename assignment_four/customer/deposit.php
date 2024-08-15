@@ -1,7 +1,7 @@
 <?php
 require "../autoload.php";
 use App\Classes\UserType;
-use App\Classes\FinanceManager;
+use App\Controllers\CashInController;
 use App\Classes\FileStorage;
 $id = $_SESSION['id'];
 
@@ -11,17 +11,17 @@ if(!$_SESSION['id'] ){
 if($_SESSION['type'] === UserType::ADMIN){
   header('Location: '.'../admin/customers.php');
 }
-$financeManager = new FinanceManager(new FileStorage());
+$cashinController = new CashInController(new FileStorage());
 if(isset($_POST['submit'])){
   $errors = [];
   if(empty($_POST['amount'])){
       $errors['amount'] = 'Please provide amount';
   }
   if(empty($errors)){
-    $financeManager->depositBalance((object) $_POST);
+    $cashinController->depositBalance((object) $_POST);
   }
 }
-$balance = $financeManager->getCurrentBalance($id);
+$balance = $cashinController->getCurrentBalance($id);
 ?>
 
 

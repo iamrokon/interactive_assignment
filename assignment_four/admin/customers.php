@@ -291,24 +291,24 @@ $customers = $financeManager->getCustomers();
                           class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-sky-500">
                           <span
                             class="text-xl font-medium leading-none text-white"
-                            ><?=$customer['slug']?></span
+                            ><?=$customer->slug?></span
                           >
                         </span>
 
                         <div class="flex-auto min-w-0">
                           <p
                             class="text-sm font-semibold leading-6 text-gray-900">
-                            <a href="./customer_transactions.php?email=<?=$customer['email']?>">
+                            <a href="./customer_transactions.php?email=<?=$customer->email?>">
                               <span
                                 class="absolute inset-x-0 bottom-0 -top-px"></span>
-                              <?=$customer['name']?>
+                              <?=$customer->name?>
                             </a>
                           </p>
                           <p class="flex mt-1 text-xs leading-5 text-gray-500">
                             <a
-                              href="./customer_transactions.php?email=<?=$customer['email']?>"
+                              href="./customer_transactions.php?email=<?=$customer->email?>"
                               class="relative truncate hover:underline"
-                              ><?=$customer['email']?></a
+                              ><?=$customer->email?></a
                             >
                           </p>
                         </div>

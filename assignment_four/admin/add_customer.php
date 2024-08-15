@@ -2,6 +2,7 @@
 require "../autoload.php";
 use App\Classes\UserType;
 use App\Classes\User;
+use App\Controllers\UserController;
 use App\Classes\FileStorage;
 $id = $_SESSION['id'];
 if(!$_SESSION['id'] ){
@@ -36,8 +37,9 @@ if(isset($_POST['submit'])){
   }
 
   if(empty($errors)){
-      $user = new User(new FileStorage());
-      $user->create((object) $userData);
+      $user = new User();
+      $userController = new UserController(new FileStorage());
+      $userController->create($user, (object) $userData);
   }
 }
 ?>

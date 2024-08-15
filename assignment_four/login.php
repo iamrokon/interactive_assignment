@@ -1,6 +1,6 @@
 <?php
 require "./autoload.php";
-use App\Classes\User;
+use App\Controllers\UserController;
 use App\Classes\FileStorage;
 
 if(isset($_POST['submit'])){
@@ -16,8 +16,8 @@ if(isset($_POST['submit'])){
     }
 
     if(empty($errors)){
-        $user = new User(new FileStorage());
-        $errors['auth_error'] = $user->getUser((object) $_POST);
+        $userController = new UserController(new FileStorage());
+        $errors['auth_error'] = $userController->getUser((object) $_POST);
     }
 }
 ?>

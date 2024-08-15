@@ -1,6 +1,7 @@
 <?php
 require "autoload.php";
 use App\Classes\User;
+use App\Controllers\UserController;
 use App\Classes\FileStorage;
 
 if(isset($_POST['submit'])){
@@ -20,10 +21,10 @@ if(isset($_POST['submit'])){
         $errors['password'] = 'Please provide a password longer than 4 characters';
     }
 
-    // var_dump($errors);
     if(empty($errors)){
-        $user = new User(new FileStorage());
-        $user->create((object) $_POST);
+        $user = new User();
+        $userController = new UserController(new FileStorage());
+        $userController->create($user, (object) $_POST);
     }
 }
 

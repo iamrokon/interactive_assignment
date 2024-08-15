@@ -45,10 +45,10 @@ class Transaction implements Model
         $this->storage = new FileStorage();
         $this->users = $this->storage->load(User::getModelName());
         $user = array_filter($this->users, function($user){
-            return $user['id'] == $this->user_id;
+            return $user->id == $this->user_id;
         });
         foreach ($user as $item) {
-            return $item["name"];
+            return $item->name;
         }
     }
 }

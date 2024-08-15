@@ -1,7 +1,7 @@
 <?php
 require "../autoload.php";
 use App\Classes\UserType;
-use App\Classes\FinanceManager;
+use App\Controllers\CashOutController;
 use App\Classes\FileStorage;
 $id = $_SESSION['id'];
 
@@ -11,17 +11,17 @@ if(!$_SESSION['id'] ){
 if($_SESSION['type'] === UserType::ADMIN){
   header('Location: '.'../admin/customers.php');
 }
-$financeManager = new FinanceManager(new FileStorage());
+$cashoutController = new CashOutController(new FileStorage());
 if(isset($_POST['submit'])){
   $errors = [];
   if(empty($_POST['amount'])){
       $errors['amount'] = 'Please provide amount';
   }
   if(empty($errors)){
-    $financeManager->withdrawBalance((object) $_POST);
+    $cashoutController->withdrawBalance((object) $_POST);
   }
 }
-$balance = $financeManager->getCurrentBalance($id);
+$balance = $cashoutController->getCurrentBalance($id);
 ?>
 
 <!DOCTYPE html>
@@ -278,7 +278,7 @@ $balance = $financeManager->getCurrentBalance($id);
               Withdaw Balance
             </h1>
             <?php 
-            $message = flash('success');
+            $message = flash('msg');
             if($message):
             ?>
             <div class="mt-2 bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4" role="alert">
