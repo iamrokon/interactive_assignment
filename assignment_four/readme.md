@@ -39,3 +39,4 @@ cd bangubank
 1. Copy-paste the pages and directories in your own php project
 2. No need to install tailwindcss and alpinejs, as the CDN is already included
 3. seperate each files and components based on your own development technique
+4. admin username: rokon@gmail.com and password: 1234 
