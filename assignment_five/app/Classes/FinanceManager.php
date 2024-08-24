@@ -39,10 +39,14 @@ class FinanceManager
                 $balanceExist2 = 1;
             }
         }
-        if(!($balanceExist1 || $balanceExist2)){
+        if(!$balanceExist1 || ($receiver_id && !$balanceExist2)){
             $balance = new Balance();
-            $balance->user_id = $balanceData->id;
-            $balance->amount = $balanceData->amount;
+            if($receiver_id){
+                $balance->setUser($receiver_id);
+            }else{
+                $balance->setUser($balanceData->id);
+            }
+            $balance->setAmount($balanceData->amount);
             $this->balances[] = $balance;
         }
         $this->saveTransaction(Balance::getModelName(), $this->balances);

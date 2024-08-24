@@ -1,0 +1,13 @@
+CREATE VIEW v_transfer AS
+SELECT transfers.id, sender.name as sender_name, sender.email as sender_email, transfers.amount, receiver.name as receiver_name, transfers.email as receiver_email, transfers.time
+FROM transfers
+LEFT JOIN users AS sender ON
+transfers.user_id = sender.id
+LEFT JOIN users as receiver ON
+transfers.email = receiver.email
+
+
+CREATE VIEW v_transactions AS
+SELECT transactions.*, users.name as user_name FROM transactions
+LEFT JOIN users ON
+users.id = transactions.user_id

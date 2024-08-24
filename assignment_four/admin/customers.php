@@ -278,6 +278,9 @@ $customers = $financeManager->getCustomers();
 
                     <?php 
                     foreach($customers as $customer):
+                      if($customer->type == UserType::ADMIN){
+                        continue;
+                      }
                     ?>
                     <li
                       class="relative flex justify-between px-4 py-5 gap-x-6 hover:bg-gray-50 sm:px-6 lg:px-8">

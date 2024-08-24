@@ -39,9 +39,13 @@ class FinanceManager
                 $balanceExist2 = 1;
             }
         }
-        if(!($balanceExist1 || $balanceExist2)){
+        if(!$balanceExist1 || ($receiver_id && !$balanceExist2)){
             $balance = new Balance();
-            $balance->setUser($balanceData->id);
+            if($receiver_id){
+                $balance->setUser($receiver_id);
+            }else{
+                $balance->setUser($balanceData->id);
+            }
             $balance->setAmount($balanceData->amount);
             $this->balances[] = $balance;
         }

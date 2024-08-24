@@ -46,7 +46,7 @@ class FinanceManagerDB
                 $balanceExist2 = 1;
             }
         }
-        if(!$balanceExist1 || !$balanceExist2){
+        if(!$balanceExist1 || ($receiver_id && !$balanceExist2)){
             $balance = new Balance();
             if($receiver_id){
                 $balance->user_id = $receiver_id;
