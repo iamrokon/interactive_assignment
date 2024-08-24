@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 23, 2024 at 03:09 PM
+-- Generation Time: Aug 24, 2024 at 08:50 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.1
 
@@ -40,15 +40,9 @@ CREATE TABLE `balances` (
 --
 
 INSERT INTO `balances` (`id`, `user_id`, `amount`, `type`, `time`) VALUES
-(1, 2, 650, 'balance', '2024-08-23 14:27:50'),
-(2, 2, 650, 'balance', '2024-08-23 14:27:55'),
-(3, 2, 650, 'balance', '2024-08-23 14:28:16'),
-(4, 4, 1050, 'balance', '2024-08-23 14:28:23'),
-(5, 3, 600, 'balance', '2024-08-23 14:28:33'),
-(6, 3, 600, 'balance', '2024-08-23 14:28:54'),
-(7, 3, 600, 'balance', '2024-08-23 14:29:00'),
-(8, 4, 1050, 'balance', '2024-08-23 14:29:35'),
-(9, 4, 1050, 'balance', '2024-08-23 14:29:41');
+(1, 2, 910, 'balance', '2024-08-24 05:35:10'),
+(2, 3, 890, 'balance', '2024-08-24 05:35:29'),
+(3, 4, 750, 'balance', '2024-08-24 05:35:39');
 
 -- --------------------------------------------------------
 
@@ -69,13 +63,12 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `user_id`, `amount`, `type`, `time`) VALUES
-(1, 2, 400, 'cashin', '2024-08-23'),
-(2, 2, 200, 'cashout', '2024-08-23'),
-(3, 2, 600, 'cashin', '2024-08-23'),
-(4, 3, 800, 'cashin', '2024-08-23'),
-(5, 3, 100, 'cashout', '2024-08-23'),
-(6, 4, 900, 'cashin', '2024-08-23'),
-(7, 4, 100, 'cashout', '2024-08-23');
+(1, 2, 1000, 'cashin', '2024-08-24'),
+(2, 2, 200, 'cashin', '2024-08-24'),
+(3, 2, 100, 'cashout', '2024-08-24'),
+(4, 3, 900, 'cashin', '2024-08-24'),
+(5, 3, 50, 'cashout', '2024-08-24'),
+(6, 4, 600, 'cashin', '2024-08-24');
 
 -- --------------------------------------------------------
 
@@ -97,10 +90,9 @@ CREATE TABLE `transfers` (
 --
 
 INSERT INTO `transfers` (`id`, `user_id`, `amount`, `email`, `type`, `time`) VALUES
-(1, 2, 100, 'jashim@gmail.com', 'transfer', '2024-08-23'),
-(2, 2, 200, 'razon@gmail.com', 'transfer', '2024-08-23'),
-(3, 3, 300, 'jashim@gmail.com', 'transfer', '2024-08-23'),
-(4, 4, 150, 'mamun@gmail.com', 'transfer', '2024-08-23');
+(1, 2, 130, 'razon@gmail.com', 'transfer', '2024-08-24'),
+(2, 2, 60, 'jashim@gmail.com', 'transfer', '2024-08-24'),
+(3, 3, 90, 'jashim@gmail.com', 'transfer', '2024-08-24');
 
 -- --------------------------------------------------------
 
@@ -134,11 +126,11 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `slug`, `type`) VALUES
 -- (See below for the actual view)
 --
 CREATE TABLE `v_transactions` (
-`amount` bigint
-,`id` int
-,`time` date
-,`type` varchar(50)
+`id` int
 ,`user_id` bigint
+,`amount` bigint
+,`type` varchar(50)
+,`time` date
 ,`user_name` varchar(100)
 );
 
@@ -149,12 +141,12 @@ CREATE TABLE `v_transactions` (
 -- (See below for the actual view)
 --
 CREATE TABLE `v_transfer` (
-`amount` bigint
-,`id` int
-,`receiver_email` varchar(100)
-,`receiver_name` varchar(100)
-,`sender_email` varchar(100)
+`id` int
 ,`sender_name` varchar(100)
+,`sender_email` varchar(100)
+,`amount` bigint
+,`receiver_name` varchar(100)
+,`receiver_email` varchar(100)
 ,`time` date
 );
 
@@ -213,19 +205,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `balances`
 --
 ALTER TABLE `balances`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `transfers`
 --
 ALTER TABLE `transfers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
