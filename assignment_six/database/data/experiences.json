@@ -1,0 +1,26 @@
+[
+    {
+        "title" : "Web Developer",
+        "area" : "Local Market",
+        "year" : "Jan 2017 - Now",
+        "technology" : "Laravel, Codeigniter and Wordpress Site"
+    },
+    {
+        "title" : "Front End Developer",
+        "area" : "Local Market",
+        "year" : "Jan 2017 - Now",
+        "technology" : "HTML,CSS,BOOTSTRAP"
+    },
+    {
+        "title" : "Logo Designer",
+        "area" : "Freelancing",
+        "year" : "Jan 2017 - 2018",
+        "technology" : "Photoshop"
+    },
+    {
+        "title" : "BSC in CSE",
+        "area" : "PABNA UNIVERSITY OF SCIENCE & TECHNOLOGY",
+        "year" : "Jan 2013 - DEC 2016",
+        "technology" : "GPA : 3.05"
+    }
+]

@@ -1,0 +1,26 @@
+.profile-main{
+    background-color:#E2E6EB;
+    min-height:200px;
+    padding:20px 0px 0px 20px !important;
+
+}
+.inner-profile{
+    background-color: white;
+    margin-left:20px !important;
+    min-height:200px;
+}
+
+.first-heading{
+   background-color: #F8F9FA;
+    min-height:100px;
+    border-top:1px solid #E4E8EC;
+    border-left:1px solid #E4E8EC;
+    border-bottom:1px solid #E4E8EC;
+    padding:20px;
+
+}
+.hed{
+    font-size:15px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

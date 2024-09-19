@@ -1,0 +1,61 @@
+.bring_middle{
+	width:200px !important;
+    margin: auto !important;
+}
+.take_middle{
+	width: 700px !important;
+    margin: auto !important;
+}
+.inner_left{
+	float:left !important;
+	width:50% !important;
+}
+.inner_right{
+	float:right !important;
+	width:50% !important;
+}
+.my_jumbotron{
+	padding-top: 1px !important;
+	padding-bottom: 1px !important;
+}
+.take_middle2{
+	width:800px !important;
+    margin: auto !important;
+}
+.full_width{
+	width:80% !important;
+	margin-top:5px !important;
+}
+.a{
+	background-color:#60ce19;
+	color:#fff;
+}
+.b{
+	background-color:#077ca5;
+	color:#fff;
+}
+.c{
+	background-color:#0a0ae0;
+	color:#fff;
+}
+.d{
+	background-color:#f23a0f;
+	color:#fff;
+}
+.e{
+	background-color:#c1b808;
+	color:#fff;
+}
+
+.container{
+	background-color:#0af2e1;
+}
+
+#rok{
+	color:#fff;
+}
+
+#back{
+	background-color:#0a0af2;
+}
+

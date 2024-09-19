@@ -1,0 +1,22 @@
+[
+    {
+        "name" : "PHP",
+        "value" : "80%"
+    },
+    {
+        "name" : "Codeigniter",
+        "value" : "90%"
+    },
+    {
+        "name" : "Wordpress",
+        "value" : "85%"
+    },
+    {
+        "name" : "Logo Design",
+        "value" : "90%"
+    },
+    {
+        "name" : "Java",
+        "value" : "75%"
+    }
+]
