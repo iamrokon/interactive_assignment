@@ -25,10 +25,9 @@
 		  <a class="navbar-brand" href="#">iamrokon</a>
 		</div>
 		<ul class="nav navbar-nav">
-		  <li class="active"><a href="#">Home</a></li>
-		  <li><a id="rok" href="#">Professional</a></li>
-		  <li><a id="rok" href="#">Experience</a></li>
-		  <li><a id="rok" href="#">Contact</a></li>
+		  <li class="active"><a href="{{ route('home') }}">Home</a></li>
+		  <li><a id="rok" href="{{ route('experiences') }}">Work experiences</a></li>
+		  <li><a id="rok" href="{{ route('projects') }}">Projects</a></li>
 		</ul>
 	  </div>
 	</nav>
