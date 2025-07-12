@@ -44,7 +44,7 @@
             class="flex items-center mb-4 sm:mb-0">
             <span
               class="self-center text-2xl font-semibold whitespace-nowrap text-white"
-              >Barta</span
+              >Inventory</span
             >
           </a>
           <ul
@@ -85,7 +85,7 @@
           <a
             href="https://github.com/alnahian2003"
             class="hover:underline"
-            >Barta</a
+            >Inventory</a
           >. All Rights Reserved.</span
         >
       </div>
